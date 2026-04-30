@@ -1,0 +1,270 @@
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SIGED - Consulta de Documento Electrónico de Titulación</title>
+
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/webfont.js.descarga" type="text/javascript" async=""></script><script type="text/javascript" async="" src="./SIGED - Consulta de Documento Electrónico de Titulación_files/js"></script><script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/sdk.js.descarga" async="" crossorigin="anonymous"></script><script async="" src="./SIGED - Consulta de Documento Electrónico de Titulación_files/analytics.js.descarga"></script><script id="facebook-jssdk" src="./SIGED - Consulta de Documento Electrónico de Titulación_files/sdk(1).js.descarga"></script><script type="text/javascript">
+            function validate(searchForm) {
+
+                var _tipoEducativo = searchForm.tipoEducativo.value;
+                var _folioSEP = searchForm.folioSEP.value;
+
+                if (_folioSEP == "" || _folioSEP == null) {
+                    alert("Debes capturar un folio.");
+                    return false;
+                }
+                searchForm.action = "/siged_consulta_dec" + "/" + _tipoEducativo + "/" + _folioSEP;
+
+                return true;
+            }
+        </script>
+
+        <!-- // FRAMEWORK GOB MX // -->
+        <link href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico" rel="shortcut icon">
+        <link href="./SIGED - Consulta de Documento Electrónico de Titulación_files/main.css" rel="stylesheet">
+        <link href="./SIGED - Consulta de Documento Electrónico de Titulación_files/gobmx-accesibilidad.min.css" rel="stylesheet">
+        <!-- // END FRAMEWORK GOB MX -->
+        
+        <link rel="stylesheet" type="text/css" href="./SIGED - Consulta de Documento Electrónico de Titulación_files/navbar-settings.css">
+        <link rel="stylesheet" type="text/css" href="./SIGED - Consulta de Documento Electrónico de Titulación_files/global_siged.css">
+
+        <!-- 	SCRIPTS ACCESIBILIDAD	-->
+        <script>
+            console.log(true);
+            var rails_env_prod = true;
+        </script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/application.js.descarga"></script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/imageReplace.js.descarga"></script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/slick.js.descarga"></script>
+        <!--	END SCRIPTS ACCESIBILIDAD	-->                
+        <style>
+            .img_resp{
+                max-width: 50px;
+                min-width: 50px;
+            }
+            .nav > li {
+                left: 0px !important;
+                margin-left: -100px !important;
+                position: relative;
+            }
+            .tab-content {
+                padding-bottom: 15vh;
+            }
+            .contenedor{
+                margin-top: 50px;
+            }
+        </style>
+    <script type="text/javascript" src="./SIGED - Consulta de Documento Electrónico de Titulación_files/pace.min.js.descarga"></script><style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+
+.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+
+.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v4/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v4/ya/r/3rhSv5V8j3o.gif) #fff no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100%;position:absolute;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v4/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v4/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+</style><link rel="stylesheet" href="./SIGED - Consulta de Documento Electrónico de Titulación_files/css" media="all"><link rel="stylesheet" href="./SIGED - Consulta de Documento Electrónico de Titulación_files/pro.min.css" type="text/css"></head>
+
+<body class="   pace-done pace-done"><header><nav class="navbar navbar-expand-md navbar-dark bg-light navbar-inverse navbar-fixed-top"><div class="container"><a href="https://www.gob.mx/" target="_blank" class="navbar-brand"><img src="./SIGED - Consulta de Documento Electrónico de Titulación_files/logo_blanco.svg" alt="Página de inicio, Gobierno de México" class="logos" style="height: 49px;width: auto;"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#GobnavbarPrincipal" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="GobnavbarPrincipal"><div class="navbar-nav nav-pills margen"><a class="nav-item nav-link" href="https://www.gob.mx/tramites" target="_self" title="Ir a trámites del gobierno">Trámites</a><a class="nav-item nav-link" href="https://www.gob.mx/gobierno" target="_self" title="Ir a gobierno">Gobierno</a><a class="nav-item nav-link" href="https://www.gob.mx/busqueda" target="_self" title="Haz búsquedas en gobierno"><i class="icon-search"></i></a></div></div></div></nav></header><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+        <section id="info"></section>
+        <!--	HEADER SIGED	-->
+        <header class=" navbar navbar-inverse">
+        	<nav class="navbar navbar-expand-xl navbar-dark bg-light sub-navbar navbar-fixed-top navbar-top-siged">
+        <div class="container">
+            <a class="navbar-brand sub-navbar" href="https://siged.sep.gob.mx/SIGED/">SIGED</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#subNavBarSIGED" aria-controls="subNavBarSIGED" aria-expanded="false" aria-label="Mostrar / Ocultar Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="subNavBarSIGED">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link subnav-link" href="https://siged.sep.gob.mx/SIGED/quienes_somos.html">¿Quiénes somos?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link subnav-link" href="https://siged.sep.gob.mx/SIGED/index.html#consultas">Consultas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link subnav-link" href="https://siged.sep.gob.mx/SIGED/estadistica_educativa.html">Estadística Educativa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link subnav-link" href="https://siged.sep.gob.mx/SIGED/indicadores_educativos.html">Indicadores Educativos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link subnav-link" href="https://siged.sep.gob.mx/SIGED/datos_abiertos.html">Datos abiertos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link subnav-link dropdown-toggle" href="https://www.siged.sep.gob.mx/titulos/autenticacion/461e54c5-ad81-4441-b767-f81c1ac6f425#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true"></span> Aviso de Privacidad</a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://siged.sep.gob.mx/SIGED/aviso_simplificado.html"><span aria-hidden="true"></span> Simplificado </a>
+                        <a class="dropdown-item" href="https://siged.sep.gob.mx/SIGED/aviso_integral.html"><span aria-hidden="true"></span> Integral</a>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</nav>
+        </header>
+        <!--	END HEADER SIGED	-->
+
+        <div>
+            <img class="img-background" src="./SIGED - Consulta de Documento Electrónico de Titulación_files/bnr_alumnos.png">
+        </div>
+
+        <div class="container container-top">
+            <div class="row align-items-center">
+                <div class="column col-lg-12 hdr_title">
+                    <h3>Sistema de Información y Gestión Educativa</h3>
+                    <h2 class="mt-1">Consulta de documentos académicos electrónicos</h2>
+                </div>
+            </div>
+        </div>
+
+        <main class="page">
+            <div class="container contenedor">
+                <ol class="breadcrumb">
+                        <!--li><a href="/titulos/"><i class="icon icon-home"></i></a></li-->
+                    <!--li><a href="https://siged.sep.gob.mx/SIGED/index.html"><i class="icon icon-home"></i></a></li-->
+                    <li><a href="https://siged.sep.gob.mx/SIGED/index.html">Inicio</a></li>
+                    <li><a href="https://siged.sep.gob.mx/SIGED/index.html#consultas">Consultas</a></li>
+                    <li><a href="https://www.siged.sep.gob.mx/titulos/">Documentos académicos electrónicos</a></li>		
+                    <li class="active"><strong>
+                            
+                                
+                                 
+                                                                            
+                                
+                                    Título Autenticado
+                                
+								
+                                
+                            
+                        </strong></li>
+                    <li><strong>Detalle</strong></li>
+                </ol>
+
+                <div class="row">
+                    <div class="col-md-11">
+                        
+                            
+                             
+                                                               
+                            
+                                <h3>Consulta de títulos electrónicos autenticados por la DGAIR</h3>
+                            
+							
+                            
+                        
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-xs-8 col-sm-8">
+                        <h3>
+                            
+                                    
+                                
+                                                                                       
+                                
+                                    Título Autenticado
+                                
+								
+                                
+                            
+                        </h3>
+                        <hr class="red">
+                    </div>
+                    <div class="col-md-4 col-xs-12 col-sm-12"></div>
+                </div>
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="https://www.siged.sep.gob.mx/titulos/autenticacion/461e54c5-ad81-4441-b767-f81c1ac6f425#tab-02" class="nav-link active" style="color: white; background-color: #10312B">Detalle
+                            del documento</a></li>
+                </ul>
+                <!--   style="color: white; background-color: #10312B "     -->
+                <div class="tab-content">                        
+                    <div class="tab-pane active" id="tab-02">                            
+                        
+                            
+                            
+                             
+                                                                           
+                                                                        
+                                                
+                                <div class="col-lg-6 col-md-6">
+                                    <label><b>Nombre:</b></label><br>
+                                    <div style="text-transform: uppercase">
+                                        CRISTIAN EDUARDO ESCOBEDO OSUNA
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <label><b>Ciclo:</b></label><br>
+                                    <div style="text-transform: uppercase">
+                                        2019 - 2020
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <label><b>Nivel:</b></label><br>
+                                    <div style="text-transform: uppercase">
+                                        SECUNDARIA
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <label><b>Calificación Final:</b></label><br>
+                                    <div style="text-transform: uppercase">
+                                        8.0
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <label><b>Institución Emisora:</b></label><br>
+                                    <div style="text-transform: uppercase">
+                                        INSTITUTO NACIONAL PARA LA EDUCACIÓN DE LOS ADULTOS - ISEA MAZATLAN
+                                    </div>
+                                    <br>
+                                </div>                                          
+                                <div class="row bottom-buffer"></div>
+
+                            
+							 
+                            
+                            
+                            
+                        
+                    </div>
+                </div>
+                <br> <br>
+            </div>
+        </main>
+        <script>
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script',
+                    'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-83445936-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+        
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/jquery-3.5.1.min.js.descarga"></script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/angular.js.descarga"></script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/angular-resource.js.descarga"></script>
+        
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/gobmx.js.descarga"></script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/gobmx-accesibilidad.min.js.descarga"></script>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/modal_global_cms.js.descarga"></script><div id="modals_principal" class="" title="Modal Principal"></div>
+        <script src="./SIGED - Consulta de Documento Electrónico de Titulación_files/config_dependency.js.descarga"></script>

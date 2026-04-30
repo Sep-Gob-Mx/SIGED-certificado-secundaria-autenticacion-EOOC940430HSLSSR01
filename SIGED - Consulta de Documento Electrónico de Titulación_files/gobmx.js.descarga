@@ -1,0 +1,123 @@
+/*! ** GOB.mx - Grafica Base v3.0.0 */
+//  ** ultima modificacion: '21-05-2020';
+
+'use strict';
+
+function _addEvent(e, evt, handler) {
+  if(typeof handler !== 'function')
+    return;
+
+  if (e.addEventListener)
+    e.addEventListener(evt, handler, false);
+  else if (e.attachEvent)
+    e.attachEvent("on" + evt, handler);
+  else
+  {
+    var oldHandler = e["on" + evt];
+  }
+}
+var _events = ["ready"];
+var _myLib = function(item) {
+  function eventWorker(item, event) {
+    this.add = function(handler) {
+      _addEvent(item, event, handler);
+    };
+  }
+  for(var i=0;i<_events.length;i++)
+    this[_events[i]] = (new eventWorker(item, _events[i])).add;
+};
+var $gmx = function(item) {
+  return new _myLib(item);
+};
+// Custom event for ready gobmx-framework
+
+
+(function() {
+
+  // Variable de la URL que se encuentra en Gruntfile.js para obtener la URl según ambiente.
+
+  //Toma el valor de la variable de NODE_ENV
+ /* @if NODE_ENV='development' **/
+   var root ='./';
+ /* @endif */
+
+  //var root ='./';
+  var path =  root + 'assets/';
+  var imagesPath = path + 'images/';
+  var scriptsPath = path + 'scripts/';
+  var stylesPath = path + 'styles/';
+  // ruta para los js del cdn
+  var scriptsCDNPath = 'https://framework-gb.cdn.gob.mx/gm/v4/js/';
+
+
+  // // variable para cargar únicamente el script de main donde viene header y footer
+  // var mainScript = [scriptsPath + 'main.js'];
+  // // variable para cargar ambos scripts (plugins.js trae bootstrap.js)
+  // var allScripts = [bootstrapScript, scriptsPath + 'main.js'];
+
+  // // función que sirve para verificar si existe el meta tag con propiedad = gobmxhelper y content = no plugins.
+  // function isMetaHelper(){
+  //   var metas = document.getElementsByTagName('meta');
+
+  //   function isMeta() {
+  //     for (var i = 0; i < metas.length; i++) {
+  //       if ( metas[i].getAttribute('property') === 'gobmxhelper') {
+  //         return metas[i].getAttribute('content');
+  //       }
+  //     }
+  //   }
+  //   if( isMeta() === 'no plugins') { return true; } else { return false; }
+  // }
+
+  // se revisa que no exista Modernizr primero para cargarlo al DOM, para después mandar a llamar la funcion de carga de scripts.
+  if(!window.Modernizr) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    //script.src = scriptsPath + 'vendor/modernizr.js';
+    script.src = scriptsCDNPath + 'modernizr.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
+  };
+
+  // Carga de pace
+  var pace = document.createElement('script');
+  pace.type = 'text/javascript';
+  //pace.src = scriptsPath + 'vendor/pace.min.js';
+  pace.src = scriptsCDNPath + 'pace.min.js';
+  document.getElementsByTagName('head')[0].appendChild(pace);
+
+  if (!window.jQuery) {
+    // Cargar de jQuery
+    var jq = document.createElement('script');
+    jq.type = 'text/javascript';
+    //jq.src = scriptsPath + 'vendor/jquery.min.js';
+    jq.src = scriptsCDNPath + 'jquery.min.js';
+    document.getElementsByTagName('body')[0].appendChild(jq);
+  }
+
+  // Espera a que jquery sea cargadp
+  setTimeout(function() {
+    // Carga de bootstrap
+  /*   var bs = document.createElement('script');
+    bs.type = 'text/javascript';
+    bs.src = scriptsPath + 'vendor/bootstrap.min.js';
+    document.getElementsByTagName('body')[0].appendChild(bs);
+     */
+
+    //carga archivo con scripts necesarios para bootstrap 4, incluyendo bootstrap.min.js
+    var allScripts = document.createElement('script');
+    allScripts.type = 'text/javascript';
+    allScripts.src = scriptsCDNPath + 'bootstrapV4.min.js';
+    document.getElementsByTagName('body')[0].appendChild(allScripts);
+
+    // Espera a que bootstrap sea cargado
+    setTimeout(function () {
+      // Carga de main
+      var main = document.createElement('script');
+      main.type = 'text/javascript';
+     // main.src = scriptsPath + 'main.js';
+      main.src = scriptsCDNPath + 'main.js';
+      document.getElementsByTagName('body')[0].appendChild(main);
+    }, 400)
+  }, 400)
+
+})();

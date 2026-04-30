@@ -1,0 +1,314 @@
+'use strict';
+
+var MX = MX || {};
+
+// Variable de la URL que se encuentra en Gruntfile.js para obtener la URl segun ambiente.
+//var URL = 'http://localhost';
+var urlEmail = 'http://www.gob.mx/subscribe';
+/* @if NODE_ENV='development' **/
+MX.root = './';
+/* @endif */
+
+//MX.root ='./';
+MX.emailService = urlEmail;
+MX.trackingID = '';
+
+
+MX.comscore = 'gobmx';
+MX.path = MX.root + 'assets/';
+MX.imagesPath = MX.path + 'images/';
+MX.scriptsPath = MX.path + 'js/';
+MX.stylesPath = MX.path + 'styles/';
+
+MX.gobmxPath = 'https://www.gob.mx';
+
+/**
+ * [getParse URL parse current URL]
+ * @return {[string]} [url ID]
+ */
+var getParseURL = function () {
+    var urlHost = window.location.host,
+        urlPath = window.location.pathname,
+        host = urlHost.toLowerCase().split('.'),
+        path = urlPath.toLowerCase(),
+        hostClean = host.slice(0, 2).join('.'),
+        pathClean;
+
+    if (!isNaN(host[0])) hostClean = urlHost;
+
+    if ( path.indexOf( '.' ) !== -1 ) {
+        var _end = path.indexOf( '.' );
+        path = path.substring( 0, _end );
+    }
+
+    if ( path.indexOf( '#' ) !== -1 ) {
+        var _end = path.indexOf( '#' );
+        path = path.substring( 0, _end );
+    }
+
+    if ( path.indexOf( '?' ) !== -1 ) {
+        var _end = path.indexOf( '?' );
+        path = path.substring( 0, _end );
+    }
+
+    if ( path === '/' ) path = '/index';
+
+    pathClean = path.replace(/\//g, ".");
+
+    return hostClean + pathClean;
+}
+
+MX.trackingID = getParseURL();
+
+MX.isMetaHelper = function () {
+    var metas = document.getElementsByTagName('meta');
+
+    function isMeta() {
+        for (var i = 0; i < metas.length; i++) {
+            if (metas[i].getAttribute('property') === 'gobmxhelper') {
+                return metas[i].getAttribute('content');
+            }
+        }
+    }
+    if( isMeta() === 'no plugins') { return true; } else { return false; }
+}
+
+if (!MX.isMetaHelper()) {
+    var WebFontConfig = {
+        google: {families: ['Montserrat:300italic,400italic,400,300,600,700:latin']}
+    };
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+}
+
+
+MX.secBuilder = function () {
+    var body = $('body');
+
+    var navBar =
+        '<header>'+
+        '<nav class="navbar navbar-expand-md navbar-dark bg-light navbar-inverse navbar-fixed-top">'+
+        '<div class="container">'+
+        '<a href="https://www.gob.mx/" target="_blank" class="navbar-brand">'+
+        '<img src="https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg" alt="Página de inicio, Gobierno de México" class="logos" style="height: 49px;width: auto;">'+
+        '</a>'+
+        '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#GobnavbarPrincipal" '+
+        'aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">'+
+        '<span class="navbar-toggler-icon"></span>'+
+        '</button>'+
+        '<div class="collapse navbar-collapse" id="GobnavbarPrincipal">'+
+        '<div class="navbar-nav nav-pills margen">'+
+        '<a class="nav-item nav-link" href="https://www.gob.mx/tramites" target="_self" title="Ir a trámites del gobierno">Trámites</a>'+
+        '<a class="nav-item nav-link" href="https://www.gob.mx/gobierno" target="_self" title="Ir a gobierno">Gobierno</a>'+
+        '<a class="nav-item nav-link" href="https://www.gob.mx/busqueda" target="_self" title="Haz búsquedas en gobierno"><i class="icon-search"></i></a>'+
+        '</div>'+
+        '</div>'+
+        '</div>'+
+        '</nav>'+
+        '</header>';
+
+    var footer =
+        '<footer class="main-footer ">' +
+        '<div class="">' +
+        '<div class="container">' +
+        '<div class="bottom-buffer-footer row">' +
+        '<div class="col-sm-3 logo-footer"><img src="https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg" href="/"' +
+        'alt="logo gobierno de méxico" class="logo_footer" style="max-width: 50%;"></div>' +
+        ' <div class="accordion col-sm-3">' +
+        '            <input id="toggle1" type="checkbox" class="accordion-toggle" name="toggle" />' +
+        '            <label for="toggle1"> <h5>Enlaces</h5></label>' +
+        '            <section>' +
+        '<div class="" style="padding-left: 0px;">' +
+        '<ul class = "nav-list">' +
+        '<li><a href="https://participa.gob.mx" target="_blank" rel="noopener"'+
+        'title="Enlace abre en ventana nueva">Participa</a></li>' +
+        /*   '<li><a href="https://www.gob.mx/publicaciones" target="_blank" rel="noopener"'+
+                   'title="Enlace abre en ventana nueva">Publicaciones Oficiales</a></li>'+*/
+        '<li><a href="http://www.ordenjuridico.gob.mx" target="_blank" rel="noopener"' +
+        'title="Enlace abre en ventana nueva">Marco Jurídico</a></li>' +
+        '<li><a href="https://consultapublicamx.inai.org.mx/vut-web/" target="_blank" rel="noopener"' +
+        'title="Enlace abre en ventana nueva">Plataforma Nacional de Transparencia</a></li>' +
+        '<li><a href="https://alertadores.funcionpublica.gob.mx/" target="_blank" rel="noopener"' +
+        'title="Enlace abre en ventana nueva">Alerta</a></li>' +
+        '</ul>' +
+        '</div>' +
+        '</section>' +
+        '      </div>' +
+        ' <div class="accordion col-sm-3">' +
+        '            <input id="toggle2" type="checkbox" class="accordion-toggle" name="toggle" />' +
+        '            <label for="toggle2"> <h5>¿Qué es gob.mx?</h5></label>' +
+        '            <section>' +
+        '<div class="">' +
+        '<p>Es el portal único de trámites, información y participación ciudadana. <a href="https://www.gob.mx/que-es-gobmx">Leer más</a></p>' +
+        '<ul class = "nav-list">' +
+        '<li><a href="https://datos.gob.mx" target="_blank" >Portal de datos abiertos</a></li>' +
+        '<li><a href="https://www.gob.mx/accesibilidad" target="_blank" >Declaración de accesibilidad</a></li>' +
+        /* '<li><a href="https://www.gob.mx/privacidadintegral" target="_blank">Aviso de privacidad integral</a></li>'+
+         '<li><a href="https://www.gob.mx/privacidadsimplificado" target="_blank">Aviso de privacidad simplificado</a></li>'+
+      */   '<li><a href="https://www.gob.mx/terminos" target="_blank">Términos y Condiciones</a></li>' +
+        /* '<li><a href="https://www.gob.mx/terminos#medidas-seguridad-informacion" target="_blank">Política de seguridad</a></li>'+
+         '<li><a href="https://www.gob.mx/sitemap" target="_blank">Mapa de sitio</a></li>'+
+
+         */
+        '</ul>' +
+        '</div>' +
+        ' </section>' +
+        '      </div>' +
+        '<div class="title col-sm-3" >' +
+        /*  '<h5><a href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54" target="_blank">Denuncia contra servidores públicos</a></h5>'+
+        * */
+        '<h5 class="link-a"><a class="footer" id="SIDEC" href="https://sidec.buengobierno.gob.mx/#!/" target="_blank" rel="sidec">Denuncia contra servidores públicos</a></h5>\n' +
+        '<h5  class="col-xs-5 col-sm-12 col-md-11 ">Síguenos en</h5>' +
+        '<ul class="col-xs-6 col-sm-12 col-md-11 list-inline">' +
+        '<li><a data-v-6b1f797a="" id="Facebook" href="https://www.facebook.com/gobmexico" target="_blank" rel="noopener" title="enlace a facebook abre en una nueva ventana" class="sendEst share-info footer">' +
+        '<img alt="Facebook" src="https://framework-gb.cdn.gob.mx/landing/img/facebook.png"></a></li>' +
+        '<li style="margin-left: 5px; margin-right: 5px;"><a data-v-6b1f797a="" id="Twitter" href="https://twitter.com/GobiernoMX" target="_blank" rel="noopener" title="Enlace a twitter abre en una nueva ventana" class="sendEst share-info footer">' +
+        '<img  alt="Twitter" src="https://framework-gb.cdn.gob.mx/landing/img/twitter.png"></a></li>' +
+        '<li  style="margin-left: 5px; margin-right: 5px;"><a data-v-6b1f797a="" id="Instagram" href="https://www.instagram.com/gobmexico/" target="_blank" rel="noopener" title="Enlace a instagram abre en una nueva ventana" class="sendEst share-info footer">' +
+        '<img alt="Instagram" src="https://framework-gb.cdn.gob.mx/landing/img/instagram.png"></a></li>' +
+        '<li style="margin-left: 5px; margin-right: 5px;"><a data-v-6b1f797a="" id="Youtube" href="https://www.youtube.com/@gobiernodemexico" target="_blank" rel="noopener" title="Enlace a youtube abre en una nueva ventana" class="sendEst share-info footer">' +
+        '<img alt="Youtube" src="https://framework-gb.cdn.gob.mx/landing/img/youtube.png"></a>' +
+        '</li>' +
+        '</ul>' +
+        ' <ul class="list-inline">\n' +
+        '            <li>\n' +
+        '              <div class="logo-079">\n' +
+        '              <a href="tel:+079" target="_blank">' +
+        '                <img src=" https://framework-gb.cdn.gob.mx/gobmx/img/079.png" href="/" alt="logo 079" class="logo-079">\n' +
+        '</a>' +
+        '              </div>\n' +
+        '            </li>\n' +
+        '          </ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</footer>';
+
+    body.prepend(navBar);
+    body.append(footer);
+
+    /* --- boton de suscribete --- */
+
+    $('body').on('click', '#subscribe', function (e) {
+        e.preventDefault();
+
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var dataString = $('#email').serialize();
+        var email = $('#email').val();
+        var url = MX.emailService;
+        var successMessage = 'Agradecemos tu registro dentro de gob.mx. De esta manera estar&aacute;s informado sobre las principales acciones y decisiones del Gobierno de la Rep&uacute;blica.<br><br>Gracias por tu inter&eacute;s y colaboraci&oacute;n. Juntos construimos <a href="/">gob.mx</a>';
+        var registeredMessage = 'Este correo electr&oacute;nico ya ha sido registrado.';
+        var failMessage = 'No se pudo registrar el correo electr&oacute;nico.';
+        var validEmail = 'Ingrese un email v&aacute;lido';
+
+        if ($.trim(email).length == 0 || re.test(email) === false) {
+            $('.message-subscribe').removeClass("hidden").html(validEmail);
+            return false;
+        } else {
+            $('.message-subscribe').addClass("hidden").html();
+
+            $.ajax({
+                type: 'POST',
+                data: "email=" + $('#email').val(),
+                dataType: 'json',
+                url: url
+            }).done(function (data) {
+                if (data.status == 'error') {
+                    $('.message-subscribe').removeClass("hidden").html(registeredMessage);
+                } else {
+                    $('#email').val('');
+                    $('#email').prop('disabled', true);
+                    $('.message-subscribe').removeClass("hidden").html(successMessage);
+                }
+            }).fail(function () {
+                $('.message-subscribe').removeClass("hidden").html(failMessage);
+            });
+        }
+        return false;
+    });
+
+    $(".check_register_news_gob_mx").change(function (e) {
+        if ($(this).is(":checked")) {
+            try {
+                e.preventDefault();
+                $("form label").each(function (i) {
+                    var aux = $("form label")[i]
+                    if ($(aux).text().indexOf("Correo electrónico") > -1) {
+                        var input = $(aux).next("input")
+                        if (input != undefined) {
+                            var dataString = $(input).val()
+                            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                            if ($.trim(dataString).length == 0 || re.test(dataString) === false) {
+                                //alert("no es valido")
+                                return false
+                            }
+                            var url = MX.emailService;
+                            $.ajax({
+                                type: 'POST',
+                                data: "email=" + dataString,
+                                dataType: 'json',
+                                url: url
+                            })
+                        }
+                    }
+                })
+            } catch (e) {
+                console.log(e)
+            }
+            return false;
+        }
+    });
+
+};
+
+$(function () {
+    MX.secBuilder();
+    if (!Modernizr.svg) {
+        var imgs = document.getElementsByTagName('img');
+        var svgExtension = /.*\.svg$/;
+        var l = imgs.length;
+        for (var i = 0; i < l; i++) {
+            if (imgs[i].src.match(svgExtension)) {
+                imgs[i].src = imgs[i].src.slice(0, -3) + 'png';
+            }
+        }
+    }
+
+    /**
+     * Vertically center Bootstrap 3 modals so they aren't always stuck at the top
+     */
+    function reposition() {
+        var modal = $(this),
+            dialog = modal.find('.modal-dialog');
+        modal.css('display', 'block');
+
+        // Dividing by two centers the modal exactly, but dividing by three
+        // or four works better for larger screens.
+        dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+    }
+
+    // Reposition when a modal is shown
+    $('.modal').on('show.bs.modal', reposition);
+
+    // Activa los tooltips
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // Reposition when the window is resized
+    $(window).on('resize', function () {
+        $('.modal:visible').each(reposition);
+    });
+    // Activa los tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+});
+
